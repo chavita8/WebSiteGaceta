@@ -1,0 +1,40 @@
+<odoo>
+    <template id="normas_list">
+        <div class="container">
+            <h2>Listado de Normas</h2>
+
+            <form action="/normas" method="GET">
+                <input type="text" name="search_query" placeholder="Buscar por número de norma" value="t t-esc="search_query""/>
+                <button type="submit">Buscar</button>
+            </form>
+
+            <t t-if="normas">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Número de Norma</th>
+                            <th>Edición</th>
+                            <th>Tipo</th>
+                            <th>Fecha</th>
+                            <th>Resumen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="normas" t-as="norma">
+                            <tr>
+                                <td><t t-esc="norma.nro_norma"/></td>
+                                <td><t t-esc="norma.edicion"/></td>
+                                <td><t t-esc="norma.tipo"/></td>
+                                <td><t t-esc="norma.fecha"/></td>
+                                <td><t t-esc="norma.resumen"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </t>
+            <t t-if="not normas">
+                <p>No se encontraron normas.</p>
+            </t>
+        </div>
+    </template>
+</odoo>
